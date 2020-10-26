@@ -2,8 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CalendarHelper } from '../helpers/calendar.helper';
 import { Month, Week, Task } from '../models/day.model';
 import * as moment from 'moment';
-import { TASKS } from '../constants/calendar.constants';
-import { TaskService } from '../services/task.service';
+import { CalendarFacade } from '../store/calendar.facade'
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,19 +13,19 @@ import { Observable } from 'rxjs';
 })
 export class CalendarComponent implements OnInit {
   public month: Month = new Month();
-  public showEventDetails: boolean = false;
+  public showEventDetails: boolean;
   public currentDate: moment.Moment;
   public tasks$: Observable<Task[]>;
   public selectedTask: Task = new Task();
 
-  constructor(private service: TaskService) {
+  constructor(private service: CalendarFacade) {
     this.currentDate = moment();
     this.month = CalendarHelper.getCalendarMonth(this.currentDate);
   }
 
   ngOnInit(): void {
-    // console.log(this.month.weeks.length)
-    this.tasks$ = this.service.getTasks();
+    this.service.getTasks();
+    this.tasks$ = this.service.tasks$;
   }
 
   trackByFn(index: number, item: Week): number {

@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/day.model';
 import { TASKS } from '../constants/calendar.constants';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-
-  constructor() {
-    let tasks =  JSON.parse(localStorage.getItem('tasks')) as Task[];
+  private baseUrl = 'http://localhost:3000';
+  constructor(private http: HttpClient) {
+    const tasks =  JSON.parse(localStorage.getItem('tasks')) as Task[];
     if(!tasks){
       localStorage.setItem('tasks', JSON.stringify(TASKS));
     }
    }
 
   getTasks(): Observable<Task[]> {
-    return of(JSON.parse(localStorage.getItem('tasks')) as Task[]);
+    try {
+      return this.http.get<Task[]>(this.baseUrl + '/tasks');
+    } catch (error) {
+      throwError(error);
+    }
   }
 
   saveTask(task: Task): void {
-    let tasks =  JSON.parse(localStorage.getItem('tasks')) as Task[];
+    const tasks =  JSON.parse(localStorage.getItem('tasks')) as Task[];
     if(task.id){
-      let indexToDelete = tasks.findIndex(i => i.id === task.id);
+      const indexToDelete = tasks.findIndex(i => i.id === task.id);
       tasks.splice(indexToDelete, 1)
       tasks.push(task);
       localStorage.setItem('tasks', JSON.stringify(tasks));

@@ -11,6 +11,10 @@ import { WeekHeaderComponent } from './week-header/week-header.component';
 import { WeekComponent } from './week/week.component';
 import { FormsModule } from '@angular/forms';
 import { UiModule } from '@greenway/ui';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { calendarReducer } from '../store/reducers/calendar.reducers';
+import { calendarEffects } from '../store/effects/calendar.effects';
 
 
 @NgModule({
@@ -29,6 +33,8 @@ import { UiModule } from '@greenway/ui';
     CalendarRoutingModule,
     FormsModule,
     UiModule,
+    StoreModule.forFeature('calendar', calendarReducer),
+    EffectsModule.forFeature(calendarEffects)
   ],
   exports: [
     CalendarComponent
