@@ -1,0 +1,83 @@
+
+.logo {
+  display: block;
+  text-indent: -9999px;
+  width: 70px;
+  height: 45px;
+  background: url(../../../assets/date.svg);
+  background-size: 100px 82px;
+}
+.app-name {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 38px;
+}
+
+.rectagle-button {
+  margin: 2px;
+  height: 40px;
+  color: #ffffff;
+  font-size: bold;
+  outline: 0;
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 38px;
+  font-size: 16px;
+  border: 1px solid #373839;
+}
+
+.circle-button {
+  margin: 2px;
+  height: 40px;
+  width: 40px;
+  color: #ffffff;
+  font-size: bold;
+  outline: 0;
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  font-size: 30px;
+}
+.rectagle-button:hover, .circle-button:hover {
+  background-color: #232626;
+}
+
+.add-event-button {
+  height: 50px;
+  width: 50px;
+  color: #0099ff;
+  font-size: bold;
+  outline: 0;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #232626;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  font-size: 40px;
+  line-height: 45px;
+}
+.add-event-button:hover {
+  background-color: #ffffff;
+}
+.right-arrow {
+  background: url(../../../assets/right-arrow.svg);
+  background-size: 32px 32px;
+}
+.left-arrow {
+  background: url(../../../assets/left-arrow.svg);
+  background-size: 32px 32px;
+}
+
+.selected-date {
+  font-size: 16px;
+}

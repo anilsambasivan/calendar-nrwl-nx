@@ -1,0 +1,15 @@
+<div class="logo-container">
+  <a href="/" class="logo">Calendar</a>
+  <span class="app-name">Calendar</span>
+</div>
+<div class="button-container">
+  <a class="rectagle-button" href="#" (click)="onToday($event)">Today</a>
+  <a class="circle-button" href="#" (click)="onPrevious($event)">&#8249;</a>
+  <a class="circle-button" href="#" (click)="onNext($event)">&#8250;</a>
+</div>
+<div class="button-container selected-date">
+  {{selectedDate | date: 'dd MMMM yyyy'}}
+</div>
+<div class="add-event-container">
+  <greenway-app-navigator></greenway-app-navigator>
+</div>

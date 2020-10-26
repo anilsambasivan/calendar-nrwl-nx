@@ -1,0 +1,9 @@
+<div style="height: 100%; text-align: center;">
+  <div class="date-container" (click)="onClick($event)">
+    <span [ngClass]="{'today' : day.today, 'other-day' : !day.today }">{{day.day.format('DD')}}</span>
+  </div>
+  <ng-container *ngFor="let task of tasks; trackBy: trackById">
+    <app-event-tag-component [taskItem]="task" (task)="onClick(task)"></app-event-tag-component>
+  </ng-container>
+  <div class="fill-area" (click)="onClick($event)"></div>
+</div>

@@ -1,0 +1,6 @@
+<div class="calendar-sheet-container">
+  <app-week-header></app-week-header>
+  <ng-container *ngFor="let week of month.weeks; trackBy: trackById">
+    <app-week class="row" [tasks]="tasks" [week]="week" (toggleEventDetailView)="onDayClick($event)"></app-week>
+  </ng-container>
+</div>

@@ -1,0 +1,18 @@
+
+<div class="main-container">
+  <app-header-component
+    (next)="onNext()"
+    (previous)="onPrevious()"
+    (today)="onToday()"
+    [selectedDate]="currentDate"
+    class="header-container">
+  </app-header-component>
+  <div class="calendar-container">
+      <app-month-component
+        class="month-container" (toggleEventDetailView)="onDayClick($event)"
+        [month]="month"
+        [tasks]="tasks$ | async">
+      </app-month-component>
+      <app-event-details-component [task]="selectedTask" *ngIf="showEventDetails" class="calendar-add-event-container"></app-event-details-component>
+  </div>
+</div>

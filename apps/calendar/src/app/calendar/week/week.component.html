@@ -1,0 +1,8 @@
+<ng-container *ngFor="let day of week.days; trackBy: trackById">
+  <app-day-component
+    [tasks]="getTasksFortheDay(day)"
+    (toggleEventDetailView)="onDayClick($event)"
+    [day]="day"
+    class="column day">
+  </app-day-component>
+</ng-container>
